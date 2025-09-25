@@ -1,0 +1,44 @@
+Databricks Overview:
+Databricks is a unified analytics and data engineering platform built on Apache Spark. 
+It provides collaborative notebooks, managed clusters, and integration with cloud storage.
+Databricks enables teams to process large-scale data and build machine learning models.
+
+Unity Catalog:
+Unity Catalog is the governance layer in Databricks. 
+It provides fine-grained access control, auditing, and centralized metadata management 
+for all data assets across workspaces. 
+It supports three-level namespaces: catalog, schema, and table.
+
+Delta Lake:
+Delta Lake is an open-source storage layer that brings ACID transactions to Apache Spark. 
+It provides schema enforcement, time travel, and data versioning. 
+Delta Lake ensures reliability for data lakes and supports batch and streaming workloads.
+
+Databricks File System (DBFS):
+DBFS is a distributed file system in Databricks, accessible via standard paths like /dbfs. 
+It allows users to mount cloud storage such as AWS S3, Azure Blob, or GCP Storage 
+and interact with files in a familiar directory structure.
+
+MLflow:
+MLflow is an open-source machine learning lifecycle management tool developed by Databricks. 
+It supports experiment tracking, model packaging, and deployment. 
+MLflow integrates with Databricks for end-to-end ML workflows.
+
+Clusters:
+In Databricks, a cluster is a set of compute resources used to run notebooks, jobs, and SQL queries. 
+Clusters can be interactive (for development) or job clusters (for production workloads). 
+Databricks manages autoscaling, termination, and instance pools.
+
+Jobs:
+Databricks Jobs allow you to schedule and orchestrate workflows. 
+A job can run notebooks, JARs, Python scripts, or Spark submit commands. 
+Jobs support retries, alerts, and integration with external schedulers like Airflow.
+
+SQL Warehouses:
+Databricks SQL Warehouses (formerly SQL Endpoints) allow users to query data using SQL. 
+They are optimized compute clusters designed for analytics and BI integrations.
+
+Workflows:
+Workflows in Databricks allow chaining multiple tasks into pipelines. 
+They can include notebooks, scripts, or Delta Live Tables, 
+providing a no-code/low-code interface for orchestration.

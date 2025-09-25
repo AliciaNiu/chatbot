@@ -1,0 +1,12 @@
+# config.yaml
+openai:
+  api_key: ""          # optional, can also use OPENAI_API_KEY env var
+  model: "gpt-3.5-turbo"
+  temperature: 0
+  top_p: 1.0
+
+vectorstore:
+  index_dir: "vectorstore"
+  chunk_size: 500
+  chunk_overlap: 50
+  top_k: 3

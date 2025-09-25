@@ -1,0 +1,32 @@
+Conversation history (store messages in a list, not just last one).
+
+Vector DB (like Pinecone, Weaviate, or FAISS) to add knowledge base.
+
+Authentication.
+
+Deploy via Docker/Terraform (since you already use them).
+
+-- to run
+uvicorn backend.main:app --reload --port 8000
+uvicorn main:app --reload --port 8000
+
+
+qdrant:
+pip install qdrant-client
+docker run -p 6333:6333 qdrant/qdrant
+
+docker run -it \
+    --rm \
+    --name qdrant_image \
+    -p 6333:6333 \
+    -p 6334:6334 \
+    -v "$(pwd)/qdrant_storage:/qdrant/storage:z" \
+    qdrant/qdrant
+
+
+weaviate:
+pip install weaviate-client
+docker run -p 8080:8080 semitechnologies/weaviate \
+  --host 0.0.0.0 \
+  --port 8080 \
+  --scheme http

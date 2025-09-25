@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #chat-box { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto; }
+    .msg-user { color: blue; margin: 5px 0; }
+    .msg-bot { color: green; margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <h1>Chatbot Demo</h1>
+  <div id="chat-box"></div>
+  <input id="message" type="text" placeholder="Type your message..." />
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    // Generate a unique session ID per browser tab
+    const session_id = "sess_" + Math.random().toString(36).substring(2, 10);
+    console.log("Session ID:", session_id);
+
+    async function sendMessage() {
+      const input = document.getElementById("message");
+      const chatBox = document.getElementById("chat-box");
+      const userMessage = input.value.trim();
+      if (!userMessage) return;
+
+      // Display user message
+      const userDiv = document.createElement("div");
+      userDiv.className = "msg-user";
+      userDiv.innerText = "You: " + userMessage;
+      chatBox.appendChild(userDiv);
+
+      // Clear input
+      input.value = "";
+
+      // Send to backend
+      try {
+        const response = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ session_id: session_id, message: userMessage })
+        });
+        const data = await response.json();
+        console.log("Response from backend:", data);
+        console.log("Bot reply:", data.reply);
+
+        // Display bot reply
+        const botDiv = document.createElement("div");
+        botDiv.className = "msg-bot";
+        botDiv.innerText = "Bot: " + data.reply;
+        chatBox.appendChild(botDiv);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+      } catch (err) {
+        console.error("Error:", err);
+      }
+    }
+  </script>
+</body>
+</html>
