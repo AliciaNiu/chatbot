@@ -3,4 +3,5 @@
 
 # Ignore data folder
 data/
-/vectors/
+vectorstore/
+__pycache__/
